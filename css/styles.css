@@ -1,0 +1,69 @@
+.draw-area {
+    width: 1000px;
+    height: 1000px;
+    border:1px solid #000000;
+    margin-top: 20px;
+}
+
+.top-panel {
+    height: 100px;
+    width: 100%;
+}
+
+.play-button-container {
+    height: 100px;
+    width: 200px;
+    border: 2px gray solid;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.play-button-container:before, .clipping-window-content:before, .top-panel:before {
+    content: "";
+    display: inline-block;
+    height: 100%;
+    vertical-align: middle;
+}
+
+.play-button-container:hover {
+    cursor: pointer;
+    background-color: #C7C3C3
+}
+
+.play-button {
+    width: 100px;
+    height: 100px;
+    background: url('../img/play.png') no-repeat;
+    background-size: cover;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.play-text, .clipping-window-text {
+    font-size: 20px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 20px;
+}
+
+.clipping-window-content {
+    margin-left: 20px;
+    height: 100px;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.clipping-window-params {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.input-params {
+    width: 200px;
+    height: 50px;
+    background-color: #D6D4D4;
+    font-size: 20px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    padding: 10px
+}

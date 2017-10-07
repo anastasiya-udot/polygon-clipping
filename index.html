@@ -1,0 +1,35 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Polygon clipping</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <script src="js/libs/jquery.js"></script>
+    <script src="js/draw-wizard.js"></script>
+    <script src="js/polygons.js"></script>
+    <script src="js/canvas.js"></script>
+    <script src="js/main.js"></script>
+    
+
+    <div class="top-panel">
+        <div id="play" class="play-button-container">
+            <div class="play-button"></div>
+            <div class="play-text">Animate</div>
+        </div>
+    
+        <div class="clipping-window-content">
+            <div class="clipping-window-text">Clipping window:</div>
+            <div class="clipping-window-params">
+                <input type="number" id="window-width" class="input-params" value="800" min="10" max="1000">
+                <input type="number" id="window-height" class="input-params" value="800" min="10" max="1000">
+            </div>
+        </div>
+    </div>
+
+    <canvas id="draw-area" class="draw-area" width="1000" height="1000"></canvas>
+
+</body>
+</html>
