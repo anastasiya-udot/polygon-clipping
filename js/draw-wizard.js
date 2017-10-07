@@ -135,42 +135,6 @@ function DrawWizard(canvas) {
         }
     };
 
-    this._divideIntoControlPoints = function(coordinates) {
-        var controlPointPeriod = coordinates.length / CONTROL_POINTS_COUNT;
-        var controlPoints = [];
-        var coordinatesFirstHalf = [];
-        var coordinatesSecondHalf = [];
-        var tempCoordinates = coordinates.slice(0);
-
-        this._sortByX(tempCoordinates);
-
-        while (tempCoordinates.length) {
-            coordinatesFirstHalf.push(tempCoordinates.pop());
-
-            if (!tempCoordinates.length) {
-                break;
-            }
-
-            coordinatesSecondHalf.push(tempCoordinates.pop());
-        }
-
-        var index = 0;
-
-        while (index <= coordinatesFirstHalf) {
-            controlPoints.push(coordinatesFirstHalf[index])
-            index += controlPointPeriod;
-        }
-
-        index = 0;
-
-        while (index <= coordinatesSecondHalf) {
-            controlPoints.push(coordinatesSecondHalf[index])
-            index += controlPointPeriod;
-        }
-
-        return controlPoints;
-    };
-
 
     this.getFrame = function(clippingCoordinates, cCoordinates, elCoordinates) {
         var _this = this;

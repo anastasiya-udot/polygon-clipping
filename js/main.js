@@ -5,7 +5,7 @@ $(document).ready(function() {
     const ELLIPSE_RADIUS_Y = 100;
 
     const DEFAULT_CIRCLE_X = 200;
-    const DEFAULT_CIRCLE_Y = 100;
+    const DEFAULT_CIRCLE_Y = 500;
 
     const DEFAULT_ELLIPSE_X = 700;
     const DEAFULT_ELLIPSE_Y = 500;
