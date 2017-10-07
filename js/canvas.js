@@ -52,5 +52,5 @@ function CanvasApi() {
 
     this.setMouseDownListener = function(callback) {
         $(this.elem).mousedown(callback);
-    }
+    };
 }

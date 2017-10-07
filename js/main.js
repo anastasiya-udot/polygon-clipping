@@ -1,8 +1,6 @@
 $(document).ready(function() {
-    const CIRCLE_RADIUS = 150;
-
-    const ELLIPSE_RADIUS_X = 300;
-    const ELLIPSE_RADIUS_Y = 100;
+    var ellipseRadiusX = 300;
+    var ellipseRadiusY = 100;
 
     const DEFAULT_CIRCLE_X = 200;
     const DEFAULT_CIRCLE_Y = 500;
@@ -10,11 +8,15 @@ $(document).ready(function() {
     const DEFAULT_ELLIPSE_X = 700;
     const DEAFULT_ELLIPSE_Y = 500;
 
+    const SCALE_DELTA_R = 5;
+
     var canvas = new CanvasApi();
     var drawWizard = new DrawWizard(canvas);
 
     var $wInput = $('#window-width');
     var $hInput = $('#window-height');
+
+    drawWizard.circleRadius = 150;
 
     drawWizard.circleCenter = {
         x: DEFAULT_CIRCLE_X,
@@ -26,7 +28,6 @@ $(document).ready(function() {
         y: DEAFULT_ELLIPSE_Y
     };
 
-    drawWizard.circleRadius = CIRCLE_RADIUS;
 
     drawWizard.clearCanvas();
     drawClippingWindow(false);
@@ -49,14 +50,14 @@ $(document).ready(function() {
 
     function drawCircle(redrawTheSame) {
         if (!redrawTheSame) {
-            drawWizard.curCircleCoordinates =  getEllipse(drawWizard.circleCenter.x, drawWizard.circleCenter.y, CIRCLE_RADIUS, CIRCLE_RADIUS);
+            drawWizard.curCircleCoordinates =  getEllipse(drawWizard.circleCenter.x, drawWizard.circleCenter.y, drawWizard.circleRadius, drawWizard.circleRadius);
         }
         drawWizard.drawCircle();
     }
 
     function drawEllipse(redrawTheSame) {
         if (!redrawTheSame) {
-            drawWizard.curEllipseCoordinates =  getEllipse(drawWizard.ellipseCenter.x, drawWizard.ellipseCenter.y, ELLIPSE_RADIUS_X, ELLIPSE_RADIUS_Y);
+            drawWizard.curEllipseCoordinates =  getEllipse(drawWizard.ellipseCenter.x, drawWizard.ellipseCenter.y, ellipseRadiusX, ellipseRadiusY);
         }
         drawWizard.drawEllipse();
     }
@@ -94,13 +95,46 @@ $(document).ready(function() {
         }
     }
 
+    function onKeyboardpress(e) {
+        console.log(e);
+        switch(e.key) {
+            case '/': {
+                drawWizard.circleRadius -= SCALE_DELTA_R;
+            } break;
+            case '*': {
+                drawWizard.circleRadius += SCALE_DELTA_R;
+            } break;
+            case '5': {
+                ellipseRadiusX -= SCALE_DELTA_R;
+            } break;
+            case '6': {
+                ellipseRadiusX += SCALE_DELTA_R;
+            } break;
+            case '2': {
+                ellipseRadiusY -= SCALE_DELTA_R;
+            } break;
+            case '3': {
+                ellipseRadiusY += SCALE_DELTA_R;
+            } break; 
+        }
+
+        drawWizard.clearCanvas();
+        drawClippingWindow(false);
+        drawCircle(false);
+        drawEllipse(false);
+    }
+
     $wInput.on('change', onInputChanged);
     $hInput.on('change', onInputChanged);
 
     canvas.setMouseDownListener(onCanvasMouseDown.bind(this));
 
+    $(document).on("keydown", onKeyboardpress.bind(this));
+
     $('#play').click(function() {
         drawWizard.rotateAndTransfer();
     });
+
+
 
 });    
