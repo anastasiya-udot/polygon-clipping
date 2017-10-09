@@ -99,19 +99,22 @@ $(document).ready(function() {
         console.log(e);
         switch(e.key) {
             case '/': {
-                drawWizard.circleRadius -= SCALE_DELTA_R;
+                if (drawWizard.circleRadius > SCALE_DELTA_R)
+                    drawWizard.circleRadius -= SCALE_DELTA_R;
             } break;
             case '*': {
                 drawWizard.circleRadius += SCALE_DELTA_R;
             } break;
             case '5': {
-                ellipseRadiusX -= SCALE_DELTA_R;
+                if (ellipseRadiusX > SCALE_DELTA_R)
+                    ellipseRadiusX -= SCALE_DELTA_R;
             } break;
             case '6': {
                 ellipseRadiusX += SCALE_DELTA_R;
             } break;
             case '2': {
-                ellipseRadiusY -= SCALE_DELTA_R;
+                if (ellipseRadiusY > SCALE_DELTA_R)
+                    ellipseRadiusY -= SCALE_DELTA_R;
             } break;
             case '3': {
                 ellipseRadiusY += SCALE_DELTA_R;
